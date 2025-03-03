@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- CSS 파일 링크 -->
+  <link href="{% static 'css/login1.css' %}" rel="stylesheet">
+
+  <!-- 로그인 페이지 내용 -->
+  <div class="login">
+    <div class="login__content">
+      <div class="login__img">
+        <img src="https://image.freepik.com/free-vector/code-typing-concept-illustration_114360-3581.jpg" alt="user login">
+      </div>
+      <div class="login__forms">
+        <!-- 로그인 폼 -->
+        <form action="{% url 'login' %}" method="POST" class="login__register" id="login-in">
+          {% csrf_token %}
+          <h1 class="login__title">로그인</h1>
+          <div class="login__box">
+            <i class='bx bx-user login__icon'></i>
+            <input type="text" placeholder="Username" name="username" class="login__input" required>
+          </div>
+          <div class="login__box">
+            <i class='bx bx-lock login__icon'></i>
+            <input type="password" placeholder="Password" name="password" class="login__input" required>
+          </div>
+          <a href="#" class="login__forgot">비밀번호 찾기</a>
+          <button type="submit" class="login__button">로그인</button>
+          <div>
+            <a href="{% url 'signup' %}" class="login__signin login__signin--signup">회원가입</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
